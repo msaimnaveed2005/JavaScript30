@@ -36,31 +36,63 @@
       'Billings, Josh', 'Birrell, Augustine', 'Blair, Tony', 'Beecher, Henry', 'Biondo, Frank'
     ];
     
-    // Array.prototype.filter()
-    // 1. Filter the list of inventors for those who were born in the 1500's
-
+      // 1. Filter the list of inventors for those who were born in the 1500's
+    const filt_inventors = inventors.filter(user => user.year >= 1500 && user.year < 1600);
+console.log(filt_inventors);
     // Array.prototype.map()
     // 2. Give us an array of the inventors first and last names
-
+const arr_name=inventors.map(user=>({ first: user.first, last: user.last}));
+console.log(arr_name);
     // Array.prototype.sort()
     // 3. Sort the inventors by birthdate, oldest to youngest
-
+const inven_sort = inventors.sort((a, b) => a.year - b.year);
+console.log(inven_sort);
     // Array.prototype.reduce()
     // 4. How many years did all the inventors live all together?
-
+const invent_combine = inventors.reduce((acc, value) => acc + (value.passed - value.year), 0);
+console.log(invent_combine);
     // 5. Sort the inventors by years lived
-
+const invent_year = inventors.sort((a, b) => (b.passed - b.year) - (a.passed - a.year));
+console.log(invent_year);
     // 6. create a list of Boulevards in Paris that contain 'de' anywhere in the name
     // https://en.wikipedia.org/wiki/Category:Boulevards_in_Paris
+const boulevards = [
+  'Boulevard de la République',
+  'Boulevard Saint-Germain',
+  'Boulevard de Montparnasse',
+  'Boulevard des Capucines',
+  'Boulevard de la Bastille',
+  'Boulevard du Temple',
+  'Boulevard de la Villette',
+  'Boulevard Malesherbes',
+  'Boulevard de Clichy',
+  'Boulevard Haussmann'
+];
 
+// Filter boulevards containing 'de' anywhere in the name
+const boulevardsWithDe = boulevards.filter(boulevard => boulevard.includes('de'));
+
+console.log(boulevardsWithDe);
 
     // 7. sort Exercise
     // Sort the people alphabetically by last name
+const sort_people = people.sort((a, b) => {
+  const lastNameA = a.split(', ')[1];
+  const lastNameB = b.split(', ')[1];
+  return lastNameA.localeCompare(lastNameB);
+});
 
+console.log(sort_people);
     // 8. Reduce Exercise
     // Sum up the instances of each of these
     const data = ['car', 'car', 'truck', 'truck', 'bike', 'walk', 'car', 'van', 'bike', 'walk', 'car', 'van', 'car', 'truck' ];
+    const sum = data.reduce((acc, value) => {
+  // If the value already exists in the accumulator, increment its count
+  acc[value] = (acc[value] || 0) + 1;
+  return acc;
+}, {});
 
+console.log(sum);
   </script>
 </body>
 </html>
